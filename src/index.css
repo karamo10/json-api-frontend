@@ -1,23 +1,89 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: sans-serif;
+  background: rgb(41, 65, 65);
 }
 
+.form-container {
+  background: #FFFFFF;
+  border-radius: 12px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+  h1 {
+    color: #242424;
+  }
+}
+
+.form {
+  padding: 20px;
+}
+
+.form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.form .last-child {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.form input, textarea {
+  font-size: 16px;
+  padding: 8px;
+  outline: none;
+  border-radius: 6px;
+}
+
+.form label {
+  color: #242424;
+}
+
+button {
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+p {
+  color: #242424;
+}
+
+h1 {
+  color: #FFFFFF;
+}
+
+h2 {
+  color: #242424;
+}
+
+.product-container {
+  background: rgb(41, 65, 65);
+}
+
+.product-container h1 {
+  text-align: center;
+}
+
+.product-card-container {
+  max-width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  background: #FFFFFF;
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.loading {
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
