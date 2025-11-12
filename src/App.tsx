@@ -13,7 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer theme='dark' />
       <Navbar />
       <Routes>
         <Route path="/" element={<ProductsList />} />

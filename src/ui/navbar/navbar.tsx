@@ -12,10 +12,10 @@ const Navbar = () => {
             <Link to={'/create-form'}>Create-Product</Link>
           </li>
           <li>
-            <Link to={'/admin/products'}>Admin-Product</Link>
+            <Link to={'/admin/products'}>Update-Product</Link>
           </li>
            <li>
-            <Link to={'/delete-products'}>Admin-Product</Link>
+            <Link to={'/delete-products'}>Delete-Product</Link>
           </li>
         </div>
       </ul>
