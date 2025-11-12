@@ -1,14 +1,13 @@
 import React, { useState, type ChangeEvent } from 'react';
 import { createProduct } from '../../services/api';
-import type { Product, NewProduct } from '../../types/product-data';
+import type { NewProduct } from '../../types/product-data';
+import { toast } from "react-toastify";
 
-export default function Form() {
+export default function CreateProductForm() {
   const [name, setName] = useState<string>('');
   const [price, setPrice] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [instock, setInstock] = useState<boolean>(true);
-  const [message, setMessage] = useState<string>('');
-  const [responseData, setResponseData] = useState<Product | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,16 +20,15 @@ export default function Form() {
     };
 
     try {
-      const newProduct = await createProduct(product);
-      setResponseData(newProduct);
-      setMessage('Product successfully created!');
+     const res = await createProduct(product);
+      toast.success(res.message);
       setName('');
       setPrice('');
       setDescription('');
       setInstock(true);
     } catch (err: any) {
-      console.error(err);
-      setMessage(`${err.message || 'Error sending data'}`);
+      toast.error(err.message || 'Error creating product');
+      console.error(err.message);
     }
 
     // const product: Product = {
@@ -64,7 +62,7 @@ export default function Form() {
 
   return (
     <div className="form-container">
-      <h1>Create Product</h1>
+      <h1>Add New Product</h1>
       <form onSubmit={handleSubmit} className="form">
         <div>
           <label htmlFor="name">Name</label>
@@ -111,19 +109,8 @@ export default function Form() {
         </div>
 
         <button type="submit">Send</button>
-        {message && <p>{message}</p>}
+        {/* {message && <p>{message}</p>} */}
       </form>
-      <div>
-        <h1>Product Recieved</h1>
-        {responseData && (
-          <div>
-            <p>Name: {responseData.name}</p>
-            <p>Price: {responseData.price}</p>
-            <p>Description: {responseData.description}</p>
-            <p>In Stock: {responseData.instock ? 'Yes' : 'No'}</p>
-          </div>
-        )}
-      </div>
     </div>
   );
 }

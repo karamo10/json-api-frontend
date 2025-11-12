@@ -21,7 +21,7 @@ export async function request(endpoint: string, options: RequestInit = {}) {
 
 // Get all products
 export async function getAllProducts(): Promise<Product[]> {
-  return request('/api/product');
+ return request('/api/product');
 }
 
 // Get one product by it slug
@@ -29,12 +29,43 @@ export async function getProductBySlug(slug: string): Promise<Product> {
   return request(`/api/product/${slug}`);
 }
 
+// Get one product by it id
+export async function getProductById(id: number): Promise<Product> {
+  return request(`/api/product/${id}`);
+}
+
 // Create new product
-export async function createProduct(product: NewProduct): Promise<Product> {
+export async function createProduct(product: NewProduct): Promise<{message: string}> {
   const res = await request(`/api/product`, {
     method: 'POST',
     body: JSON.stringify(product),
   });
 
-  return res.product;
+  return res;
+}
+
+// // Update product
+export async function updateProduct(
+  id: number,
+  product: Partial<NewProduct>
+): Promise<{message: string}> {
+  const res = await request(`/api/product/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify(product),
+  });
+
+  return res;
+}
+
+// delete product
+export async function deleteProduct(id: number) {
+  const res = await request(`/api/products/${id}`, {
+   method: 'DELETE',
+  })
+  
+  if (!res.ok) {
+    throw new Error('Failed to delete product');
+  }
+
+  return res.json();
 }

@@ -1,15 +1,19 @@
 import type { Product } from '../../types/product-data';
-import { Link } from 'react-router-dom';
 
-
-export default function ProductCard({ product }: { product: Product }) {
-
+export default function ProductCardDeleteItem({
+  product,
+  onDelete,
+}: {
+  product: Product;
+  onDelete: () => void;
+}) {
   return (
-    <Link to={`/product/${product.id}`} className="product-card">
+    <div className="product-card">
       <h2>Name: {product.name}</h2>
       <p>Price: GMD {product.price}</p>
       <p>Description: {product.description}</p>
       <p>In Stock: {product.instock ? 'true' : 'false'}</p>
-    </Link>
+      <button onClick={onDelete}>Delete</button>
+    </div>
   );
 }
