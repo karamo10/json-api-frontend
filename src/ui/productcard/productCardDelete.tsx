@@ -1,12 +1,6 @@
 import type { Product } from '../../types/product-data';
 
-export default function ProductCardDeleteItem({
-  product,
-  onDelete,
-}: {
-  product: Product;
-  onDelete: () => void;
-}) {
+export default function ProductCardDeleteItem({ product,  onDelete, }: { product: Product; onDelete: () => void; }) {
   return (
     <div className="product-card">
       <h2>Name: {product.name}</h2>

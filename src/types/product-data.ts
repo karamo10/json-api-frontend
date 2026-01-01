@@ -5,8 +5,8 @@ export type Product = {
     description?: string;
     instock?: boolean;
 };
-// I will be using this type forcreating new products, Id is not require when creating a product cuz backend generates it.
 export type NewProduct = Omit<Product, 'id'>;
+// I will be using this type for creating new products, Id is not require when creating a product cuz backend generates it.
 // No need to include { slug: string } in product Type or in the Form
 // It is generated on the backend (via generateUniqueSlug(name)) when the product is created.
 

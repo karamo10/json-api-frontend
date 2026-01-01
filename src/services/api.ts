@@ -35,10 +35,11 @@ export async function getProductById(id: number): Promise<Product> {
 }
 
 // Create new product
-export async function createProduct(product: NewProduct): Promise<{message: string}> {
+// API function about sending data and it expects raw JS object
+export async function createProduct(payload: NewProduct): Promise<{message: string}> {
   const res = await request(`/api/product`, {
     method: 'POST',
-    body: JSON.stringify(product),
+    body: JSON.stringify(payload),
   });
 
   return res;

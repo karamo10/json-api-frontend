@@ -18,7 +18,8 @@ export default function CreateProductForm() {
       description,
       instock,
     };
-
+    // sending the product as argument to createProduct api function
+    // At runtime 'payload' just becomes reference to "product"
     try {
      const res = await createProduct(product);
       toast.success(res.message);
@@ -31,7 +32,7 @@ export default function CreateProductForm() {
       console.error(err.message);
     }
 
-    // const product: Product = {
+    // const product: NewProduct = {
     //   name,
     //   price: Number(price),
     //   description,
